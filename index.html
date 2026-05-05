@@ -1,148 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>改正保険業法対応 支援ページ</title>
+  <title>LP Hero Architect</title>
   <style>
-    :root {
-      --primary: #005fa3;
-      --accent: #00a3d9;
-      --text: #1f2d3d;
-      --muted: #5f6b7a;
-      --bg: #f5f8fb;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
-      color: var(--text);
-      background: #fff;
-      line-height: 1.7;
-    }
-    .container {
-      width: min(1100px, 92%);
-      margin: 0 auto;
-    }
-    .hero {
-      min-height: 70vh;
-      display: flex;
-      align-items: flex-end;
-      background:
-        linear-gradient(100deg, rgba(255,255,255,.92) 10%, rgba(255,255,255,.55) 45%, rgba(255,255,255,.15) 100%),
-        url("hero.jpg") center/cover no-repeat;
-      padding: 80px 0;
-    }
-    .hero-card {
-      max-width: 650px;
-      background: rgba(255,255,255,.82);
-      border-radius: 16px;
-      padding: 32px;
-      backdrop-filter: blur(3px);
-      box-shadow: 0 10px 30px rgba(0,0,0,.1);
-    }
-    .kicker {
-      display: inline-block;
-      font-size: .86rem;
-      letter-spacing: .08em;
-      color: var(--primary);
-      background: #eaf4ff;
-      padding: 6px 12px;
-      border-radius: 999px;
-      margin-bottom: 14px;
-      font-weight: 700;
-    }
-    h1 { margin: 0 0 14px; font-size: clamp(1.7rem, 3.6vw, 2.6rem); line-height: 1.35; }
-    .lead { color: var(--muted); margin: 0; }
-
-    section { padding: 64px 0; }
-    .bg { background: var(--bg); }
-    h2 { margin-top: 0; font-size: 1.9rem; color: var(--primary); }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      margin-top: 24px;
-    }
-    .card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid #e3ebf3;
-      box-shadow: 0 4px 16px rgba(0, 58, 104, 0.06);
-    }
-    .card h3 { margin-top: 0; font-size: 1.1rem; }
-    .steps { padding-left: 1.2rem; }
-    .cta {
-      margin-top: 28px;
-      display: inline-block;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #fff;
-      text-decoration: none;
-      padding: 12px 22px;
-      border-radius: 999px;
-      font-weight: 700;
-    }
-    footer {
-      border-top: 1px solid #e4eaf1;
-      padding: 26px 0;
-      font-size: .9rem;
-      color: #6b7685;
-    }
+    :root{--bg:#f3f7ff;--card:#fff;--ink:#0f172a;--muted:#475569;--line:#dbe5ff;--pri:#1e40af}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,"Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:linear-gradient(160deg,#f8fbff,#eef4ff)}
+    .wrap{max-width:1200px;margin:auto;padding:24px}.hero{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 8px 30px #c7d6ff44}
+    h1{margin:0 0 6px;font-size:32px} .sub{color:var(--muted)} .cta{background:var(--pri);color:#fff;border:0;padding:10px 16px;border-radius:12px}
+    .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;margin-top:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+    .options{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}.opt{border:1px solid #c9d7ff;background:#f8fbff;padding:10px;border-radius:12px;cursor:pointer}
+    .opt.active{border:2px solid var(--pri);background:#eaf1ff}.step{margin-bottom:18px}.label{font-weight:700}.help{font-size:13px;color:var(--muted);margin:6px 0}
+    input,textarea,select{width:100%;padding:10px;border-radius:10px;border:1px solid #cbd5e1;margin-top:8px} textarea{min-height:68px}
+    .progress{height:8px;background:#e5edff;border-radius:99px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,#3b82f6,#1d4ed8)}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{padding:8px 10px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;cursor:pointer}.tab.active{background:#eaf1ff;border-color:#3b82f6}
+    pre{white-space:pre-wrap;background:#0b1220;color:#e2e8f0;padding:14px;border-radius:12px;max-height:420px;overflow:auto}.row{display:flex;gap:8px;flex-wrap:wrap}
+    .sm{font-size:12px;color:var(--muted)} @media (max-width:900px){.grid{grid-template-columns:1fr}h1{font-size:26px}}
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <div class="hero-card">
-        <span class="kicker">2025年 改正保険業法対応</span>
-        <h1>制度対応を、<br>現場に合わせて前向きに。</h1>
-        <p class="lead">改正保険業法への対応は、社内ルール整備・説明責任強化・運用定着までを一体で進めることが重要です。
-        本ページでは「相談しながら、情報交換しながら」進めるための考え方をご紹介します。</p>
-      </div>
-    </div>
-  </header>
-
-  <section>
-    <div class="container">
-      <h2>こんなお悩みはありませんか？</h2>
-      <div class="grid">
-        <article class="card"><h3>何から着手すべきか不明</h3><p>法改正の論点が多く、優先順位づけに時間がかかっている。</p></article>
-        <article class="card"><h3>部門間の認識がそろわない</h3><p>営業・管理・法務で対応イメージが分かれ、推進が遅れてしまう。</p></article>
-        <article class="card"><h3>運用定着まで見通せない</h3><p>規程を整えても、実務での実行・記録・監査対応に不安がある。</p></article>
-      </div>
-    </div>
+<div class="wrap">
+  <section class="hero">
+    <h1>選ぶだけで、LPの第一印象が決まる。</h1>
+    <p class="sub">LP Hero Architect — ヒーロー設計 / コピー / 画像生成プロンプト / 実装指示を一括生成。</p>
+    <div class="row"><button class="cta" onclick="scrollToWizard()">ヒーローを設計する</button><button onclick="loadSample(0)">サンプル: 保険</button><button onclick="loadSample(1)">サンプル: ワイン</button><button onclick="loadSample(2)">サンプル: DX</button></div>
   </section>
 
-  <section class="bg">
-    <div class="container">
-      <h2>まずは「相談・情報交換」から始めましょう</h2>
-      <p>改正保険業法対応は、正解を一社だけで抱え込まず、同じ課題に向き合う実務者同士の情報交換が有効です。
-      状況整理から実務論点の確認まで、段階的に進める場をご提供します。</p>
-      <ol class="steps">
-        <li><strong>現状ヒアリング：</strong>業務フロー・規程・体制の現状を確認</li>
-        <li><strong>論点整理：</strong>改正ポイントとのギャップを見える化</li>
-        <li><strong>対応設計：</strong>実務で動くルール・記録運用を具体化</li>
-        <li><strong>情報交換：</strong>他社事例・よくある論点を共有</li>
-      </ol>
-      <a class="cta" href="#contact">無料相談・情報交換を申し込む</a>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <h2>お問い合わせ</h2>
-      <p>「まずは話を聞いてみたい」という段階でも問題ありません。
-      改正保険業法対応について、貴社の状況に合わせてご案内します。</p>
-      <div class="card">
-        <p><strong>ご相談内容例：</strong>初期診断 / 規程整備 / 教育計画 / 記録運用 / 監査準備</p>
-        <p><strong>連絡先：</strong>example@company.co.jp / 03-0000-0000</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">© 2026 Insurance Compliance Support</div>
-  </footer>
-</body>
-</html>
+  <div id="wizard" class="grid">
+    <section class="card">
+      <div class="progress"><div id="bar" class="bar" style="width:12.5%"></div></div><p class="sm">8ステップ入力ウィザード</p>
+      <div id="steps"></div>
+      <div class="row"><button onclick="saveProject()">保存</button><button onclick="resetForm()">リセット</button><button onclick="loadSaved()">保存読込</button></div>
+    </section>
+    <section class="card">
+      <h3>リアルタイムプレビュー</h3><div id="preview"></div><hr>
+      <div class="tabs" id="tabs"></div>
+      <div class="row" style="margin:8px 0"><button onclick="copyCurrent()">現在タブをコピー</button><button onclick="copyAll()">全体コピー</button></div>
+      <pre id="output"></pre>
+    </section>
+  </div>
+</div>
+<script>
+const options={
+purpose:["問い合わせ獲得","無料相談","資料請求","サービス説明","商品販売","採用","イベント集客","事例紹介","ブランド認知","その他"],
+target:["中小企業経営者","大手企業の担当者","保険代理店オーナー","法人営業担当者","DX担当者","マーケティング担当者","ワイン好きの一般消費者","PTA・保護者","ゲーム好きの若年層","投資・Web3関心層","その他"],
+problem:["情報が多すぎて選べない","何から始めればいいか分からない","今の業者・代理店に不満がある","法改正や制度対応が不安","コストが心配","時間がない","品質に不安がある","比較検討が面倒","信頼できる相談先がない","現状を変えたいが動けていない","その他"],
+emotionalGoal:["ここなら相談できそう","他より安心できる","かなり洗練されている","すぐに試してみたい","信頼できる","早そう・簡単そう","面白そう・ワクワクする","自分に関係がありそう","今すぐ確認した方がよさそう","未来感がある"],
+coreValue:["実績","専門性","スピード","安心感","比較提案","デザイン性","わかりやすさ","独自情報","価格の納得感","最新性","高級感","面白さ","伴走力","その他"],
+cta:["無料相談はこちら","資料請求する","まずは情報交換する","詳しく見る","事例を見る","無料で試す","診断してみる","今すぐ確認する","お問い合わせ","サンプルを見る","その他"],
+outputRange:["ヒーロー画像プロンプトだけ","ファーストビュー全体モック","コピー案まで","Canva/Figma編集指示まで","Codex実装指示まで","LP全体構成まで","すべて出力"],
+visual:["professional","trustworthy","corporate","premium","sophisticated","modern startup","SaaS style","futuristic","attention-grabbing","bento grid","glassmorphism","soft gradients","photorealistic","Japanese business scene","clean illustration"]
+};
+const samples=[
+{projectName:"改正保険業法・代理店体制整備相談LP",purpose:"無料相談",target:"保険代理店オーナー",problem:"法改正や制度対応が不安",emotionalGoal:"ここなら相談できそう",coreValue:"安心感",cta:"まずは情報交換する",visualTags:["professional","trustworthy","premium","Japanese business scene","sophisticated"],layout:"左コピー右ビジュアル",devicePriority:"両方",style:"写真風",tone:"明るい",density:"コーポレート寄り"},
+{projectName:"ご近所バズワイン",purpose:"サービス説明",target:"ワイン好きの一般消費者",problem:"情報が多すぎて選べない",emotionalGoal:"すぐに試してみたい",coreValue:"わかりやすさ",cta:"今すぐ確認する",visualTags:["photorealistic","premium","soft gradients"],layout:"左コピー右ビジュアル",devicePriority:"スマホ重視",style:"写真風",tone:"ワインレッド系",density:"広告バナー寄り"},
+{projectName:"AI/DX推進支援LP",purpose:"問い合わせ獲得",target:"DX担当者",problem:"何から始めればいいか分からない",emotionalGoal:"信頼できる",coreValue:"伴走力",cta:"資料請求する",visualTags:["modern startup","SaaS style","bento grid","trustworthy"],layout:"左コピー右ビジュアル",devicePriority:"両方",style:"UI風",tone:"青系",density:"余白多め"}
+];
+let state={projectName:"",purpose:"",target:"",targetCustom:"",problem:"",problemCustom:"",emotionalGoal:"",coreValue:"",cta:"",visualTags:[],outputRange:"すべて出力",devicePriority:"両方",layout:"左コピー右ビジュアル",style:"写真風",tone:"明るい",density:"余白多め"};
+let currentTab='Summary';
+const steps=[
+['LPの目的','purpose',options.purpose,'LPの目的によって、コピー・CTA・画面構成が変わります。'],['ターゲット','target',options.target,'ターゲットが明確なほど説得力が上がります。'],['相手の悩み','problem',options.problem,'最も強い課題を選んでください。'],['感情ゴール','emotionalGoal',options.emotionalGoal,'最終的に感じてほしい状態。'],['一番強い価値','coreValue',options.coreValue,'主訴求は1つに絞ると強くなります。'],['CTA','cta',options.cta,'一番押してほしい行動。'],['ビジュアル方向性','visualTags',options.visual,'複数選択可のタグ。'],['出力範囲','outputRange',options.outputRange,'今回はどこまで出力するか。']];
+function render(){
+  const s=document.getElementById('steps'); s.innerHTML='';
+  steps.forEach((st,i)=>{const div=document.createElement('div');div.className='step';div.innerHTML=`<div class='label'>STEP ${i+1}: ${st[0]}</div><div class='help'>${st[3]}</div>`;
+    const ops=document.createElement('div');ops.className='options'; st[2].forEach(v=>{const b=document.createElement('button');b.className='opt'+((Array.isArray(state[st[1]])?state[st[1]].includes(v):state[st[1]]===v)?' active':''); b.textContent=v; b.onclick=()=>{if(st[1]==='visualTags'){const set=new Set(state.visualTags);set.has(v)?set.delete(v):set.add(v);state.visualTags=[...set]}else state[st[1]]=v; update()}; ops.appendChild(b);});div.appendChild(ops);
+    if(st[1]==='target'||st[1]==='problem'){div.innerHTML+=`<input placeholder='自由入力' value='${state[st[1]+'Custom']||''}' oninput="state['${st[1]}Custom']=this.value;update()">`}
+    s.appendChild(div);
+  });
+  s.insertAdjacentHTML('beforeend',`<div class='step'><div class='label'>追加設定</div><input placeholder='プロジェクト名' value='${state.projectName}' oninput="state.projectName=this.value;update()"><div class='row'><select onchange="state.devicePriority=this.value;update()"><option>PC重視</option><option>スマホ重視</option><option ${state.devicePriority==='両方'?'selected':''}>両方</option></select><select onchange="state.layout=this.value;update()"><option>左コピー右ビジュアル</option><option>中央コピー</option><option>右コピー左ビジュアル</option><option>上コピー下ビジュアル</option></select></div><div class='row'><select onchange="state.style=this.value;update()"><option>写真風</option><option>UI風</option><option>イラスト風</option><option>合成ビジュアル</option></select><select onchange="state.tone=this.value;update()"><option>明るい</option><option>暗い</option><option>白基調</option><option>黒基調</option><option>青系</option><option>ゴールド系</option><option>ワインレッド系</option></select><select onchange="state.density=this.value;update()"><option>余白多め</option><option>情報密度高め</option><option>広告バナー寄り</option><option>コーポレート寄り</option></select></div></div>`);
+  const out=generateAll(state); document.getElementById('preview').innerHTML=`<p><b>${out.heroSummary.split('\n')[0]}</b></p><p class='sm'>${state.layout} / ${state.tone} / ${state.style}</p>`;
+  const tabs=['Summary','Copy','Image Prompt','Canva/Figma','Codex','JSON']; document.getElementById('tabs').innerHTML=tabs.map(t=>`<button class='tab ${t===currentTab?'active':''}' onclick="currentTab='${t}';update()">${t}</button>`).join('');
+  const map={'Summary':out.heroSummary+'\n\n'+out.layout,'Copy':out.copyOptions.join('\n\n'),'Image Prompt':out.imagePrompt,'Canva/Figma':out.figma.join('\n'),'Codex':out.codex.join('\n'),'JSON':JSON.stringify(out.json,null,2)};
+  document.getElementById('output').textContent=map[currentTab];
+}
+function fallback(v,d){return v&&v.trim()?v:d}
+function generateAll(i){const target=fallback(i.targetCustom||i.target,'想定顧客'); const problem=fallback(i.problemCustom||i.problem,'課題が明確ではない');
+const heroSummary=`ページ目的：${fallback(i.purpose,'問い合わせ獲得')}\nターゲット：${target}\n相手の悩み：${problem}\n感情ゴール：${fallback(i.emotionalGoal,'信頼できる')}\n主訴求：${fallback(i.coreValue,'専門性')}\nCTA：${fallback(i.cta,'お問い合わせ')}\nビジュアル方向：${(i.visualTags.length?i.visualTags:['professional','trustworthy']).join(', ')}\n推奨レイアウト：${i.layout}`;
+const layout=`- 左45%：見出し、サブコピー、CTA、信頼要素\n- 右55%：メインビジュアル\n- 下部：実績・安心材料ミニカード\n- 背景：${i.tone}、${i.density}\n- スマホ：コピー→ビジュアル→CTA→信頼要素`; const cta=fallback(i.cta,'お問い合わせ');
+const copyOptions=[`【案1：王道・信頼型】\nメインコピー：${target}の課題を、確かな実装力で前進へ。\nサブコピー：${problem}を整理し、${fallback(i.coreValue,'専門性')}を軸に、実行可能な一歩へ導きます。\nCTA：${cta}\n補足：無理な提案ではなく現状整理から。`,`【案2：強め・広告型】\nメインコピー：迷っている時間を、成果に変える。\nサブコピー：${target}向けに、最短で判断できる設計と訴求を提示。\nCTA：${cta}\n補足：今すぐ比較・検討できます。`,`【案3：洗練・高級型】\nメインコピー：第一印象から、信頼を設計する。\nサブコピー：premium / sophisticated な世界観で、静かに強い訴求を実現。\nCTA：${cta}\n補足：上質な余白と明快な階層設計。`];
+const imagePrompt=`Create a high-quality landing page hero image / mockup for Japanese LP use.\nPurpose: ${fallback(i.purpose,'Lead generation')}\nTarget audience: ${target}\nCore problem: ${problem}\nCore value proposition: ${fallback(i.coreValue,'trustworthy execution')}\nVisual direction: ${(i.visualTags.length?i.visualTags:['professional','trustworthy','premium']).join(', ')}, ${i.tone}, ${i.style}\nLayout: ${i.layout}, left-side or upper-left area reserved for copy\nMain visual: conversion-focused composition with realistic context\nLighting: ${i.tone==='暗い'?'cinematic controlled light':'bright natural light'}\nColor palette: aligned to ${i.tone}\nComposition: strong visual hierarchy, premium commercial landing page quality\nNegative space: clean negative space for headline and CTA\nMood: trustworthy, polished, action-oriented\nImplementation-friendly requirements: background image and HTML text separated, no text baked in image\nAvoid: no readable text, no logos, no real brand names, no watermark, avoid clutter, avoid random UI text`;
+const figma=["- 画像を背景に使う場合、見出し領域（左/上）を必ず空ける。","- CTAボタンは視線導線の終点に配置し、主副2ボタン構成を推奨。","- SP版は人物の顔と主題を中央寄せでトリミング。","- 文字・ボタン・バッジは画像生成AIに描かせずCanva/Figmaで後載せ。","- 背景/人物/装飾カード/CTAを分離するとABテストと差し替えが容易。"];
+const codex=["- セクション: Hero > Trust Badges > Optional quick proof cards","- コンポーネント: HeroText, HeroVisual, CTAGroup, ProofChips","- レスポンシブ: mobile first、SPは縦積み","- 画像はdecorative扱い、テキストは常にHTMLで実装","- Tailwind方針: max-w, gap, rounded-2xl, shadow-sm, gradient bg","- a11y: 見出し階層、ボタンラベル明確化、コントラスト確保","- 画像内文字は禁止、背景画像とHTMLテキストを分離"];
+const json={projectName:fallback(i.projectName,'Untitled LP Hero'),purpose:fallback(i.purpose,''),target,problem,emotionalGoal:fallback(i.emotionalGoal,''),coreValue:fallback(i.coreValue,''),cta,visualTags:i.visualTags,layout:i.layout,devicePriority:i.devicePriority,heroSummary,copyOptions,imagePrompt,figmaCanvaInstructions:figma,codexImplementationInstructions:codex,createdAt:new Date().toISOString()};
+return {heroSummary,layout,copyOptions,imagePrompt,figma,codex,json};}
+function update(){document.getElementById('bar').style.width=(Object.values(state).filter(v=>Array.isArray(v)?v.length:v).length/16*100)+'%';render()}
+function saveProject(){localStorage.setItem('lpHeroArchitect',JSON.stringify(state));alert('保存しました')} function loadSaved(){const v=localStorage.getItem('lpHeroArchitect');if(v){state=JSON.parse(v);update();alert('読込しました')}}
+function resetForm(){state={...state,projectName:'',purpose:'',target:'',targetCustom:'',problem:'',problemCustom:'',emotionalGoal:'',coreValue:'',cta:'',visualTags:[]};update()}
+function loadSample(i){state={...state,...samples[i]};update()} function copyCurrent(){navigator.clipboard.writeText(document.getElementById('output').textContent)}
+function copyAll(){const o=generateAll(state);navigator.clipboard.writeText([o.heroSummary,o.layout,o.copyOptions.join('\n\n'),o.imagePrompt,o.figma.join('\n'),o.codex.join('\n'),JSON.stringify(o.json,null,2)].join('\n\n'))}
+function scrollToWizard(){document.getElementById('wizard').scrollIntoView({behavior:'smooth'})}
+render();
+</script>
+</body></html>
