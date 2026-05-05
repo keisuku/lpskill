@@ -1,1 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>改正保険業法対応 支援ページ</title>
+  <style>
+    :root {
+      --primary: #005fa3;
+      --accent: #00a3d9;
+      --text: #1f2d3d;
+      --muted: #5f6b7a;
+      --bg: #f5f8fb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.7;
+    }
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: flex-end;
+      background:
+        linear-gradient(100deg, rgba(255,255,255,.92) 10%, rgba(255,255,255,.55) 45%, rgba(255,255,255,.15) 100%),
+        url("hero.jpg") center/cover no-repeat;
+      padding: 80px 0;
+    }
+    .hero-card {
+      max-width: 650px;
+      background: rgba(255,255,255,.82);
+      border-radius: 16px;
+      padding: 32px;
+      backdrop-filter: blur(3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.1);
+    }
+    .kicker {
+      display: inline-block;
+      font-size: .86rem;
+      letter-spacing: .08em;
+      color: var(--primary);
+      background: #eaf4ff;
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+    h1 { margin: 0 0 14px; font-size: clamp(1.7rem, 3.6vw, 2.6rem); line-height: 1.35; }
+    .lead { color: var(--muted); margin: 0; }
 
+    section { padding: 64px 0; }
+    .bg { background: var(--bg); }
+    h2 { margin-top: 0; font-size: 1.9rem; color: var(--primary); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #e3ebf3;
+      box-shadow: 0 4px 16px rgba(0, 58, 104, 0.06);
+    }
+    .card h3 { margin-top: 0; font-size: 1.1rem; }
+    .steps { padding-left: 1.2rem; }
+    .cta {
+      margin-top: 28px;
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    footer {
+      border-top: 1px solid #e4eaf1;
+      padding: 26px 0;
+      font-size: .9rem;
+      color: #6b7685;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <span class="kicker">2025年 改正保険業法対応</span>
+        <h1>制度対応を、<br>現場に合わせて前向きに。</h1>
+        <p class="lead">改正保険業法への対応は、社内ルール整備・説明責任強化・運用定着までを一体で進めることが重要です。
+        本ページでは「相談しながら、情報交換しながら」進めるための考え方をご紹介します。</p>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <h2>こんなお悩みはありませんか？</h2>
+      <div class="grid">
+        <article class="card"><h3>何から着手すべきか不明</h3><p>法改正の論点が多く、優先順位づけに時間がかかっている。</p></article>
+        <article class="card"><h3>部門間の認識がそろわない</h3><p>営業・管理・法務で対応イメージが分かれ、推進が遅れてしまう。</p></article>
+        <article class="card"><h3>運用定着まで見通せない</h3><p>規程を整えても、実務での実行・記録・監査対応に不安がある。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg">
+    <div class="container">
+      <h2>まずは「相談・情報交換」から始めましょう</h2>
+      <p>改正保険業法対応は、正解を一社だけで抱え込まず、同じ課題に向き合う実務者同士の情報交換が有効です。
+      状況整理から実務論点の確認まで、段階的に進める場をご提供します。</p>
+      <ol class="steps">
+        <li><strong>現状ヒアリング：</strong>業務フロー・規程・体制の現状を確認</li>
+        <li><strong>論点整理：</strong>改正ポイントとのギャップを見える化</li>
+        <li><strong>対応設計：</strong>実務で動くルール・記録運用を具体化</li>
+        <li><strong>情報交換：</strong>他社事例・よくある論点を共有</li>
+      </ol>
+      <a class="cta" href="#contact">無料相談・情報交換を申し込む</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>お問い合わせ</h2>
+      <p>「まずは話を聞いてみたい」という段階でも問題ありません。
+      改正保険業法対応について、貴社の状況に合わせてご案内します。</p>
+      <div class="card">
+        <p><strong>ご相談内容例：</strong>初期診断 / 規程整備 / 教育計画 / 記録運用 / 監査準備</p>
+        <p><strong>連絡先：</strong>example@company.co.jp / 03-0000-0000</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© 2026 Insurance Compliance Support</div>
+  </footer>
+</body>
+</html>
